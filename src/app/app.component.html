@@ -1,0 +1,47 @@
+<nav class="nav">
+  <div>
+    <span>Video app</span>
+  </div>
+</nav>
+<div class="container">
+  <button class="btn-floating teal add-button" (click)="onSwitchForm()">
+    <!-- <i class="material-icons"></i> -->
+    <mat-icon>search</mat-icon>
+  </button>
+
+  <div class="row edit-row" [class.drawer]="showForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Link filmu</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <button mat-raised-button>Dodaj film</button>
+  </div>
+  <div class="options">
+    <button mat-raised-button>Ulubione filmy</button>
+    <button mat-raised-button>Ostatnio dodane</button>
+    <button mat-raised-button>Najstarsze</button>
+    <button mat-raised-button>Ulubione filmy</button>
+    <button mat-raised-button>Usuń wszystkie filmy</button>
+  </div>
+
+  <div class="filmList">
+    <div class="display">
+      <button mat-raised-button [matMenuTriggerFor]="menu">Rodzaju displayu</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Lista</button>
+        <button mat-menu-item>Kafelki</button>
+      </mat-menu>
+    </div>
+    <div class="filmNew">
+      <button mat-raised-button>Obejrzyj</button>
+      <button mat-raised-button>Usuń</button>
+      <button mat-raised-button>Dodaj do ulubionych</button>
+    </div>
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+  </div>
+</div>
+
+
+
+<router-outlet></router-outlet>
