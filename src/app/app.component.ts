@@ -8,4 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'videoApp';
 
+  add(): void {
+    console.log('nowy film');
+  }
 }
