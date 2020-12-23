@@ -7,9 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'videoApp';
-  showForm = false;
 
-  onSwitchForm(): void {
-    this.showForm = !this.showForm;
-  }
 }
