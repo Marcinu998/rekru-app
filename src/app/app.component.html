@@ -7,7 +7,7 @@
   <div class="row">
     <mat-form-field appearance="fill">
       <mat-label>Link filmu</mat-label>
-      <input matInput>
+      <input matInput [(ngModel)]="movies.link">
     </mat-form-field>
     <button mat-raised-button (click)="add()">Dodaj film</button>
   </div>
