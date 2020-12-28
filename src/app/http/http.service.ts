@@ -5,17 +5,18 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpService {
-  private movies: Movies[] = [];
+  private movie: Movie[] = [];
+  behaviorSubject: any;
 
-  fetchMovies(): Observable<Movies[]> {
-    return of(this.movies);
+  fetchMovies(): Observable<Movie[]> {
+    return of(this.movie);
   }
-  addMovie(movies: Movies): Observable<Movies[]> {
-    this.movies.push(movies);
-    return of(this.movies);
+  addMovie(movie: Movie): Observable<Movie[]> {
+    this.movie.push(movie);
+    return of(this.movie);
   }
 }
-export interface Movies {
+export interface Movie {
   link: string;
 }
 

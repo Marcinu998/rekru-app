@@ -1,5 +1,5 @@
 import { BaseHttpService } from './http/base-http.service';
-import { Movies } from './http/http.service';
+import { Movie } from './http/http.service';
 import { Component } from '@angular/core';
 
 
@@ -10,11 +10,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'videoApp';
-  movies: Movies = { link: '' };
+  movie: Movie = { link: '' };
   constructor(private baseHttpService: BaseHttpService) { }
 
   add(): void {
-    this.baseHttpService.addMovie(this.movies);
+    this.baseHttpService.addMovie(this.movie);
     // console.log('działa');
   }
+
 }

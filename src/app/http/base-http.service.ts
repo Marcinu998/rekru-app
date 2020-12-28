@@ -1,4 +1,4 @@
-import { Movies } from './http.service';
+import { Movie } from './http.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observer, Subject } from 'rxjs';
 import { HttpService } from './http.service';
@@ -8,25 +8,26 @@ import { HttpService } from './http.service';
 })
 export class BaseHttpService {
 
-  behaviorSubject = new BehaviorSubject<Movies[]>([]);
-  subject = new Subject<Movies[]>();
+  behaviorSubject = new BehaviorSubject<Movie[]>([]);
+  subject = new Subject<Movie[]>();
 
   constructor(private httpService: HttpService) {
     this.init();
   }
+
   // tslint:disable-next-line: typedef
-  addMovie(movies: Movies) {
-    this.httpService.addMovie(movies).subscribe(this.observer());
+  addMovie(movie: Movie) {
+    this.httpService.addMovie(movie).subscribe(this.observer());
   }
 
   private init(): void {
     this.httpService.fetchMovies().subscribe(this.observer());
   }
-  private observer(): Observer<Movies[]> {
+  private observer(): Observer<Movie[]> {
     return {
-      next: (persons: Movies[]) => {
-        this.behaviorSubject.next(persons);
-        this.subject.next(persons);
+      next: (movies: Movie[]) => {
+        this.behaviorSubject.next(movies);
+        this.subject.next(movies);
       },
       error: error => console.error(error),
       complete: () => console.log('Complete!')
