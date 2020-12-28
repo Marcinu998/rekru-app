@@ -9,7 +9,8 @@
       <mat-label>Link filmu</mat-label>
       <input matInput [(ngModel)]="movie.link">
     </mat-form-field>
-    <button mat-raised-button (click)="add()">Dodaj film</button>
+    <button mat-raised-button (click)="addMovie()">Dodaj film</button>
+    <app-movies *ngIf="movie"></app-movies>
   </div>
   <div class="options">
     <button mat-raised-button>Ulubione filmy</button>

@@ -13,9 +13,9 @@ export class AppComponent {
   movie: Movie = { link: '' };
   constructor(private baseHttpService: BaseHttpService) { }
 
-  add(): void {
+  addMovie(): void {
     this.baseHttpService.addMovie(this.movie);
-    // console.log('działa');
+    console.log('działa');
   }
 
 }
