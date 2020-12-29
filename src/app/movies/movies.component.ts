@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class MoviesComponent implements OnInit, OnDestroy {
   movies: Movie[] = [];
+  movie: Movie = { link: '' };
   private subscriptions = new Subscription();
 
   constructor(private baseHttpService: BaseHttpService) { }
@@ -29,5 +30,8 @@ export class MoviesComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
-
+  addMovie(): void {
+    this.baseHttpService.addMovie(this.movie);
+    console.log('działa');
+  }
 }

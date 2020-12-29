@@ -9,7 +9,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'videoApp';
   movie: Movie = { link: '' };
   constructor(private baseHttpService: BaseHttpService) { }
 
