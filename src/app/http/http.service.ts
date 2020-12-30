@@ -8,7 +8,7 @@ export class HttpService {
   private movie: newMovie[] = [];
   behaviorSubject: any;
 
-  fetchMovies(): Observable<newMovie[]> {
+  fetchMovie(): Observable<newMovie[]> {
     return of(this.movie);
   }
   addMovie(movie: newMovie): Observable<newMovie[]> {

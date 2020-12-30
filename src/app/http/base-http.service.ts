@@ -21,7 +21,7 @@ export class BaseHttpService {
   }
 
   private init(): void {
-    this.httpService.fetchMovies().subscribe(this.observer());
+    this.httpService.fetchMovie().subscribe(this.observer());
   }
   private observer(): Observer<newMovie[]> {
     return {

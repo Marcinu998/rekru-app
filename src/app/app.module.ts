@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
 import { MoviesComponent } from './movies/movies.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { MoviesComponent } from './movies/movies.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule, MatMenuModule, MatButtonModule, MatMenuModule, MatInputModule,
-    MatIconModule, MatFormFieldModule, MatPaginatorModule, FormsModule
+    MatIconModule, MatFormFieldModule, MatPaginatorModule, FormsModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
