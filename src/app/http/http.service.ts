@@ -5,18 +5,19 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpService {
-  private movie: Movie[] = [];
+  private movie: newMovie[] = [];
   behaviorSubject: any;
 
-  fetchMovies(): Observable<Movie[]> {
+  fetchMovies(): Observable<newMovie[]> {
     return of(this.movie);
   }
-  addMovie(movie: Movie): Observable<Movie[]> {
+  addMovie(movie: newMovie): Observable<newMovie[]> {
     this.movie.push(movie);
     return of(this.movie);
   }
 }
-export interface Movie {
+// tslint:disable-next-line: class-name
+export interface newMovie {
   link: string;
 }
 

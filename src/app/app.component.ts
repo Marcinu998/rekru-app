@@ -1,7 +1,4 @@
-import { BaseHttpService } from './http/base-http.service';
-import { Movie } from './http/http.service';
 import { Component } from '@angular/core';
-
 
 @Component({
   selector: 'app-root',
@@ -9,12 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  movie: Movie = { link: '' };
-  constructor(private baseHttpService: BaseHttpService) { }
 
-  addMovie(): void {
-    this.baseHttpService.addMovie(this.movie);
-    console.log('działa');
-  }
+  constructor() { }
 
 }

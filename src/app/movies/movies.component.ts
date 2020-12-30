@@ -1,4 +1,4 @@
-import { Movie } from './../http/http.service';
+import { newMovie } from './../http/http.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BaseHttpService } from './../http/base-http.service';
 import { Subscription } from 'rxjs';
@@ -9,15 +9,15 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit, OnDestroy {
-  movies: Movie[] = [];
-  movie: Movie = { link: '' };
+  movies: newMovie[] = [];
+  movie: newMovie = { link: '' };
   private subscriptions = new Subscription();
 
   constructor(private baseHttpService: BaseHttpService) { }
 
   ngOnInit(): void {
     const sub = this.baseHttpService.behaviorSubject.subscribe(
-      (data: Movie[]) => {
+      (data: newMovie[]) => {
         this.movies = data;
         console.log('Movies Subscription ');
       },
@@ -30,8 +30,12 @@ export class MoviesComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
+  // addMovie(): void {
+  //   this.baseHttpService.addMovie(this.movie);
+  //   console.log('działa');
+  // }
   addMovie(): void {
-    this.baseHttpService.addMovie(this.movie);
-    console.log('działa');
+    this.movies.unshift(this.movie);
+    this.movie = { link: '' };
   }
 }
