@@ -10,16 +10,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
+import { MoviesComponent } from './movies/movies.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MoviesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule, MatMenuModule, MatButtonModule, MatMenuModule, MatInputModule,
-    MatIconModule, MatFormFieldModule, MatPaginatorModule
+    MatIconModule, MatFormFieldModule, MatPaginatorModule, FormsModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
