@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class MoviesComponent implements OnInit, OnDestroy {
   movies: newMovie[] = [];
-  movie: newMovie = { link: '' };
+  movie: newMovie = { id: '', type: 'youtube | vimeo' };
   private subscriptions = new Subscription();
 
   constructor(private baseHttpService: BaseHttpService) { }
@@ -36,6 +36,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
   // }
   addMovie(): void {
     this.movies.unshift(this.movie);
-    this.movie = { link: '' };
+    this.movie = { id: '', type: 'youtube | vimeo' };
+    console.log(this.movie);
   }
 }

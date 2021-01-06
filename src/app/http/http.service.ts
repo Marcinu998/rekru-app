@@ -18,7 +18,8 @@ export class HttpService {
 }
 // tslint:disable-next-line: class-name
 export interface newMovie {
-  link: string;
+  type: 'youtube | vimeo';
+  id: string;
 }
 
 

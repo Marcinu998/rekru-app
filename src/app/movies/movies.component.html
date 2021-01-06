@@ -1,7 +1,7 @@
 <div class="row">
   <mat-form-field appearance="fill">
     <mat-label>Link filmu</mat-label>
-    <input matInput [(ngModel)]="movie.link">
+    <input matInput [(ngModel)]="movie.id">
   </mat-form-field>
   <button mat-raised-button (click)="addMovie()">Dodaj film</button>
 
@@ -15,7 +15,7 @@
     </mat-menu>
   </div>
 </div>
-<div class="filmNew" *ngFor="let movie of movies">{{ movie.link }}
+<div class="filmNew" *ngFor="let movie of movies">{{ movie.id }}
   <button mat-raised-button>Obejrzyj</button>
   <button mat-raised-button>Usuń</button>
   <button mat-raised-button>Dodaj do ulubionych</button>
