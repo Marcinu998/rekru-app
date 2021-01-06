@@ -1,4 +1,4 @@
-import { newMovie } from './../http/http.service';
+import { Movie } from '../interfaces';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BaseHttpService } from './../http/base-http.service';
 import { Subscription } from 'rxjs';
@@ -9,16 +9,17 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit, OnDestroy {
-  movies: newMovie[] = [];
-  movie: newMovie = { id: '', type: 'youtube | vimeo' };
+  movies: Movie[] = [];
+  // movie: Movie = { id: '', type: 'youtube | vimeo' };
+  movie: Movie[] = [];
   private subscriptions = new Subscription();
 
   constructor(private baseHttpService: BaseHttpService) { }
 
   ngOnInit(): void {
     const sub = this.baseHttpService.behaviorSubject.subscribe(
-      (data: newMovie[]) => {
-        this.movies = data;
+      (data: Movie[]) => {
+        this.movie = data;
         console.log('Movies Subscription ');
       },
       error => console.error(error),
@@ -35,8 +36,8 @@ export class MoviesComponent implements OnInit, OnDestroy {
   //   console.log('działa');
   // }
   addMovie(): void {
-    this.movies.unshift(this.movie);
-    this.movie = { id: '', type: 'youtube | vimeo' };
+    // this.movies.unshift(this.movie);
+    this.movie = [];
     console.log(this.movie);
   }
 }

@@ -1,25 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Movie } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
-  private movie: newMovie[] = [];
+  private movie: Movie[] = [];
   behaviorSubject: any;
 
-  fetchMovie(): Observable<newMovie[]> {
+  fetchMovie(): Observable<Movie[]> {
     return of(this.movie);
   }
-  addMovie(movie: newMovie): Observable<newMovie[]> {
+  addMovie(movie: Movie): Observable<Movie[]> {
     this.movie.push(movie);
     return of(this.movie);
   }
 }
-// tslint:disable-next-line: class-name
-export interface newMovie {
-  type: 'youtube | vimeo';
-  id: string;
-}
-
 
