@@ -1,4 +1,3 @@
-import { Movie } from '../interfaces';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,16 +7,13 @@ import { Component } from '@angular/core';
 })
 
 export class MoviesComponent {
-  movies: Movie[] = [];
-  newMovieInput: Movie[] = [];
-  value = '';
-  addMovies = [];
+  movies = [];
+  newMovieInput = '';
 
   constructor() { }
 
   addMovie(): void {
-    console.log('działa');
-    this.newMovieInput = [];
+    console.log(this.newMovieInput);
   }
 
 }

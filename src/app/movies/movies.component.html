@@ -4,9 +4,8 @@
     <input matInput [(ngModel)]="newMovieInput">
   </mat-form-field>
   <button mat-raised-button (click)="addMovie()">Dodaj film</button>
-
 </div>
-<div class="movieList">
+<div class="movie-list">
   <div class="display">
     <button mat-raised-button [matMenuTriggerFor]="menu">Rodzaju displayu</button>
     <mat-menu #menu="matMenu">
@@ -15,7 +14,6 @@
     </mat-menu>
   </div>
 </div>
-<!-- <div class="movie" *ngFor="let movie of movies">{{movie}} -->
 <div class="movie" *ngFor="let movie of movies">{{movie}}
   <button mat-raised-button>Obejrzyj</button>
   <button mat-raised-button>Usuń</button>
