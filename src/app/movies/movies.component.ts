@@ -13,7 +13,6 @@ export class MoviesComponent {
 
   constructor() { }
 
-
   addMovie(): void {
     const movieInfo = this.parseUserInput(this.movieInput);
     this.movieInput = '';
