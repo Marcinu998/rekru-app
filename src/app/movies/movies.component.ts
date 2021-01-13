@@ -11,8 +11,6 @@ export class MoviesComponent {
   movies: Movie[] = [];
   movieInput = '';
 
-
-
   constructor() { }
 
   addMovie(): void {
