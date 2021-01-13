@@ -9,7 +9,7 @@ import { Movie } from '../interfaces';
 
 export class MoviesComponent {
   movies: Movie[] = [];
-  movieInput = '';
+  movieInput = 'wpisz link';
 
   constructor() { }
 
