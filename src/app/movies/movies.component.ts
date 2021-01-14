@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Movie } from '../interfaces';
 
 @Component({
   selector: 'app-movies',
@@ -7,13 +8,23 @@ import { Component } from '@angular/core';
 })
 
 export class MoviesComponent {
-  movies = [];
-  newMovieInput = '';
+  movies: Movie[] = [];
+  movieInput = '';
 
   constructor() { }
 
+
   addMovie(): void {
-    console.log(this.newMovieInput);
+    const movieInfo = this.parseUserInput(this.movieInput);
+    this.movieInput = '';
+    console.log(movieInfo);
   }
 
+  parseUserInput(movieInput: string): Movie {
+    return {
+      type: 'youtube | vimeo',
+      link: movieInput,
+      id: ''
+    };
+  }
 }
