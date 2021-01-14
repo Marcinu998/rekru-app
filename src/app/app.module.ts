@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { MoviesComponent } from './movies/movies.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-
+import { getVideoId } from 'get-video-id';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { StoreModule } from '@ngrx/store';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule, MatMenuModule, MatButtonModule, MatMenuModule, MatInputModule,
-    MatIconModule, MatFormFieldModule, MatPaginatorModule, FormsModule, HttpClientModule, StoreModule.forRoot({}, {})
+    MatIconModule, MatFormFieldModule, MatPaginatorModule, FormsModule, HttpClientModule, StoreModule.forRoot({}, {}), getVideoId
   ],
   providers: [],
   bootstrap: [AppComponent]
