@@ -1,7 +1,7 @@
 
 const getSrc = require('get-src');
 
-export function getVideoId(str: any) {
+export function getVideoId(str: any): any {
   if (typeof str !== 'string') {
     throw new TypeError('get-video-id expects a string');
   }
@@ -10,25 +10,14 @@ export function getVideoId(str: any) {
     str = getSrc(str);
   }
 
-  // remove surrounding whitespaces or linefeeds
   str = str.trim();
-
-  // remove the '-nocookie' flag from youtube urls
   str = str.replace('-nocookie', '');
-
-  // remove any leading `www.`
   str = str.replace('/www.', '/');
-
   let metadata = {};
 
-  // Try to handle google redirection uri
   if (/\/\/google/.test(str)) {
-    // Find the redirection uri
     const matches = str.match(/url=([^&]+)&/);
-
-    // Decode the found uri and replace current url string - continue with final link
     if (matches) {
-      // Javascript can get encoded URI
       str = decodeURIComponent(matches[1]);
     }
   }
@@ -55,13 +44,12 @@ export function getVideoId(str: any) {
   }
   return metadata;
 }
-
 /**
  * Get the vimeo id.
- * @param {string} str - the url from which you want to extract the id
- * @returns {string|undefined}
+ * @param; {string} str - the url from which you want to extract the id
+ * @returns; {string|undefined}
  */
-function vimeo(str: string) {
+function vimeo(str: string): any {
   if (str.indexOf('#') > -1) {
     str = str.split('#')[0];
   }
@@ -69,25 +57,22 @@ function vimeo(str: string) {
     str = str.split('?')[0];
   }
 
-  var id;
-  var arr;
-
-  var primary = /https?:\/\/vimeo\.com\/([0-9]+)/;
-
-  var matches = primary.exec(str);
+  let id;
+  let arr;
+  const primary = /https?:\/\/vimeo\.com\/([0-9]+)/;
+  const matches = primary.exec(str);
   if (matches && matches[1]) {
     return matches[1];
   }
 
-  var vimeoPipe = [
+  const vimeoPipe = [
     'https?:\/\/player\.vimeo\.com\/video\/[0-9]+$',
     'https?:\/\/vimeo\.com\/channels',
     'groups',
     'album'
   ].join('|');
 
-  var vimeoRegex = new RegExp(vimeoPipe, 'gim');
-
+  const vimeoRegex = new RegExp(vimeoPipe, 'gim');
   if (vimeoRegex.test(str)) {
     arr = str.split('/');
     if (arr && arr.length) {
@@ -99,87 +84,75 @@ function vimeo(str: string) {
       id = arr[1].split('&')[0];
     }
   }
-
   return id;
 }
 
 /**
  * Get the vine id.
- * @param {string} str - the url from which you want to extract the id
- * @returns {string|undefined}
+ * @param; {string} str - the url from which you want to extract the id
+ * @returns; {string|undefined}
  */
-function vine(str: string) {
-  var regex = /https:\/\/vine\.co\/v\/([a-zA-Z0-9]*)\/?/;
-  var matches = regex.exec(str);
+function vine(str: string): any {
+  const regex = /https:\/\/vine\.co\/v\/([a-zA-Z0-9]*)\/?/;
+  const matches = regex.exec(str);
   return matches && matches[1];
 }
 
 /**
  * Get the Youtube Video id.
- * @param {string} str - the url from which you want to extract the id
- * @returns {string|undefined}
+ * @param; {string} str - the url from which you want to extract the id
+ * @returns; {string|undefined}
  */
-function youtube(str: string) {
-  // remove time hash at the end of the string
+function youtube(str: any): any {
   str = str.replace(/#t=.*$/, '');
-
-  // shortcode
-  var shortcode = /youtube:\/\/|https?:\/\/youtu\.be\/|http:\/\/y2u\.be\//g;
-
+  const shortcode = /youtube:\/\/|https?:\/\/youtu\.be\/|http:\/\/y2u\.be\//g;
   if (shortcode.test(str)) {
-    var shortcodeid = str.split(shortcode)[1];
+    const shortcodeid = str.split(shortcode)[1];
     return stripParameters(shortcodeid);
   }
 
-  // /v/ or /vi/
-  var inlinev = /\/v\/|\/vi\//g;
+  const inlinev = /\/v\/|\/vi\//g;
 
   if (inlinev.test(str)) {
-    var inlineid = str.split(inlinev)[1];
+    const inlineid = str.split(inlinev)[1];
     return stripParameters(inlineid);
   }
 
-  // v= or vi=
-  var parameterv = /v=|vi=/g;
+  const parameterv = /v=|vi=/g;
 
   if (parameterv.test(str)) {
-    var arr = str.split(parameterv);
+    const arr = str.split(parameterv);
     return stripParameters(arr[1].split('&')[0]);
   }
 
-  // v= or vi=
-  var parameterwebp = /\/an_webp\//g;
+  const parameterwebp = /\/an_webp\//g;
 
   if (parameterwebp.test(str)) {
-    var webp = str.split(parameterwebp)[1];
+    const webp = str.split(parameterwebp)[1];
     return stripParameters(webp);
   }
 
-  // embed
-  var embedreg = /\/embed\//g;
+  const embedreg = /\/embed\//g;
 
   if (embedreg.test(str)) {
-    var embedid = str.split(embedreg)[1];
+    const embedid = str.split(embedreg)[1];
     return stripParameters(embedid);
   }
 
-  // ignore /user/username pattern
-  var usernamereg = /\/user\/([a-zA-Z0-9]*)$/g;
+  const usernamereg = /\/user\/([a-zA-Z0-9]*)$/g;
 
   if (usernamereg.test(str)) {
     return undefined;
   }
 
-  // user
-  var userreg = /\/user\/(?!.*videos)/g;
+  const userreg = /\/user\/(?!.*videos)/g;
 
   if (userreg.test(str)) {
-    var elements = str.split('/');
+    const elements = str.split('/');
     return stripParameters(elements.pop());
   }
 
-  // attribution_link
-  var attrreg = /\/attribution_link\?.*v%3D([^%&]*)(%26|&|$)/;
+  const attrreg = /\/attribution_link\?.*v%3D([^%&]*)(%26|&|$)/;
 
   if (attrreg.test(str)) {
     return stripParameters(str.match(attrreg)[1]);
@@ -188,11 +161,11 @@ function youtube(str: string) {
 
 /**
  * Get the VideoPress id.
- * @param {string} str - the url from which you want to extract the id
- * @returns {string|undefined}
+ * @param; {string} str - the url from which you want to extract the id
+ * @returns; {string|undefined}
  */
-function videopress(str) {
-  var idRegex;
+function videopress(str: any): any {
+  let idRegex;
   if (str.indexOf('embed') > -1) {
     idRegex = /embed\/(\w{8})/;
     return str.match(idRegex)[1];
@@ -200,7 +173,7 @@ function videopress(str) {
 
   idRegex = /\/v\/(\w{8})/;
 
-  var match = str.match(idRegex);
+  const match = str.match(idRegex);
 
   if (match && match.length > 0) {
     return str.match(idRegex)[1];
@@ -210,8 +183,8 @@ function videopress(str) {
 
 /**
  * Strip away any parameters following `?` or `/` or '&'
- * @param str
- * @returns {String}
+ * @param;
+ * @returns; {String};
  */
 function stripParameters(str: string): string {
   // Split parameters or split folder separator

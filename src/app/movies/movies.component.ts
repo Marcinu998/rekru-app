@@ -1,6 +1,7 @@
+import { identifierModuleUrl } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { Movie } from '../interfaces';
-import * as getVideoId from '../shared/recognize-video-type-id';
+import { getVideoId } from '../shared/recognize-video-type-id';
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -22,12 +23,12 @@ export class MoviesComponent {
   }
 
   parseUserInput(movieInput: string): Movie {
-    const getVideoMetadata = getVideoId.getVideoId(movieInput);
-    console.log(getVideoMetadata);
+    const videoMetadata = getVideoId(movieInput);
+    console.log(videoMetadata);
     return {
-      type: 'youtube | vimeo',
+      type: videoMetadata.service,
       link: movieInput,
-      id: ''
+      id: videoMetadata.id,
     };
   }
 }
