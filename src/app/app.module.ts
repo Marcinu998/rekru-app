@@ -15,7 +15,6 @@ import { MoviesComponent } from './movies/movies.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 
-
 @NgModule({
   declarations: [
     AppComponent,

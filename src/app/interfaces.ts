@@ -1,5 +1,6 @@
 export interface Movie {
-  type: 'youtube | vimeo';
+  type: 'youtube' | 'vimeo';
   id: string;
   link: string;
 }
+
