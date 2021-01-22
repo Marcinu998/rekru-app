@@ -3,3 +3,8 @@ export interface Movie {
   id: string;
   link: string;
 }
+// export interface MovieMetadata {
+//   id: string;
+//   service: 'youtube' | 'vimeo';
+//   link: string;
+// }
