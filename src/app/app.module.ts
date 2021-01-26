@@ -14,6 +14,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers, metaReducers } from '../app/state/movies/movies-state';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppRoutingModule,
     BrowserAnimationsModule, MatMenuModule, MatButtonModule, MatMenuModule, MatInputModule,
     MatIconModule, MatFormFieldModule, MatPaginatorModule, FormsModule, HttpClientModule,
-    StoreModule.forRoot({}, {}), StoreDevtoolsModule.instrument(),
+    StoreModule.forRoot(reducers, { metaReducers }), StoreDevtoolsModule.instrument(),
   ],
   providers: [],
   bootstrap: [AppComponent]

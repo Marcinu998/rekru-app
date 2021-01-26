@@ -3,4 +3,9 @@ export interface Movie {
   id: string;
   link: string;
 }
-
+export interface MovieState {
+  movies: Movie[] | any;
+}
+export const initialState: MovieState = {
+  movies: [],
+};
