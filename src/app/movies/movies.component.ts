@@ -25,7 +25,7 @@ export class MoviesComponent {
 
   parseUserInput(movieInput: string): Movie {
     const videoMetadata = getVideoId(movieInput);
-    this.store.dispatch(addMovie({ movies: { type: '', id: '', link: '' } }));
+    this.store.dispatch(addMovie({ movies: { type: 'type', id: 'id', link: 'link' } }));
     return {
       type: videoMetadata.service,
       link: movieInput,

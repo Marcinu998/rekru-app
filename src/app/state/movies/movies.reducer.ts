@@ -1,15 +1,14 @@
-import { reducers } from './movies-state';
 import { createReducer, on, Action } from '@ngrx/store';
-import { initialState, MovieState, Movie } from 'src/app/interfaces';
+import { initialState, Movie } from 'src/app/interfaces';
 import { addMovie } from './movies.actions';
 
 export const reducer = createReducer(
-  initialState as MovieState,
-  on(addMovie, (state: MovieState) => ({
+  initialState as Movie,
+  on(addMovie, (state: Movie) => ({
     ...state,
   })),
 );
 
-export function AppReducer(state: MovieState, action: Action): Movie {
-  return reducers(state as MovieState, action as Action);
+export function AppReducer(state: Movie, action: Action): Movie {
+  return reducer(state as Movie, action as Action);
 }
