@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Movie } from '../interfaces';
 import { getVideoId } from '../shared/recognize-video-type-id';
 import { Store } from '@ngrx/store';
-import { MovieState } from '../interfaces';
+import { ProjectState } from '../interfaces';
 import { addMovie } from '../state/movies/movies.actions';
 
 @Component({
@@ -15,7 +15,7 @@ export class MoviesComponent {
   movies: Movie[] = [];
   movieInput = '';
 
-  constructor(private store: Store<MovieState>) { }
+  constructor(private store: Store<ProjectState>) { }
 
   addMovie(): void {
     const movieInfo = this.parseUserInput(this.movieInput);
@@ -25,7 +25,7 @@ export class MoviesComponent {
 
   parseUserInput(movieInput: string): Movie {
     const videoMetadata = getVideoId(movieInput);
-    this.store.dispatch(addMovie({ movies: { type: 'type', id: 'id', link: 'link' } }));
+    this.store.dispatch(addMovie({ movie: [] }));
     return {
       type: videoMetadata.service,
       link: movieInput,

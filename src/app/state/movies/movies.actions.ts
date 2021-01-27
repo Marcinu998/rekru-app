@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
+import { Movie } from 'src/app/interfaces';
 
 export const addMovie = createAction(
-  '[getMovie] Get Movie ',
-  props<{ movies: object }>()
+  '[addMovie] Add Movie ',
+  props<{ movie: Movie[] }>()
 );

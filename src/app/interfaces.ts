@@ -1,13 +1,12 @@
 export interface Movie {
-  type: 'youtube' | 'vimeo' | string;
+  type: 'youtube' | 'vimeo';
   id: string;
   link: string;
 }
-export interface MovieState {
-  movies: Movie | any;
+export interface ProjectState {
+  movies: Array<string> | any;
 }
-export const initialState: Movie = {
-  type: '',
-  id: '',
-  link: ''
+export const initialState: ProjectState = {
+  movies: [],
 };
+
