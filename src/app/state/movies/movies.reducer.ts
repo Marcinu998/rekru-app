@@ -1,16 +1,18 @@
-import { createReducer, on, Action, ActionReducerMap } from '@ngrx/store';
+import { createReducer, on, Action } from '@ngrx/store';
+import { Movie } from 'src/app/interfaces';
 import { moviesInitialState, MovieState } from './movies-state';
 import { addMovie } from './movies.actions';
 
 const reducer = createReducer(
   moviesInitialState,
-  on(addMovie, (state: MovieState) => ({
-    ...state,
-  })),
+  on(addMovie, (state: MovieState, payload: { movie: Movie }) => {
+    console.log(payload);
+    return ({
+      ...state,
+      movies: [...state.movies, payload.movie],
+    });
+  }),
 );
-// export const reducers: ActionReducerMap<MovieState> = {
-//   movies: Array,
-// };
 export function movieReducer(state: MovieState = moviesInitialState, action: Action): MovieState {
   return reducer(state, action);
 }

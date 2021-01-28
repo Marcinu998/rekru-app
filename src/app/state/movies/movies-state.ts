@@ -6,4 +6,3 @@ export interface MovieState {
 export const moviesInitialState: MovieState = {
   movies: [],
 };
-
