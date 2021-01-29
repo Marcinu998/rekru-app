@@ -1,4 +1,3 @@
-import { addMovie } from './../state/movies/movies.actions';
 import { MovieFacade } from './../state/movies/movies.facade';
 import { Component } from '@angular/core';
 import { Movie } from '../interfaces';
@@ -21,16 +20,10 @@ export class MoviesComponent {
     private movieFacade: MovieFacade,
   ) { }
 
-  // tslint:disable-next-line: use-lifecycle-interface
-  // public ngOnInit(movie: Movie): void {
-  //   this.movieFacade.getFacade(movie);
-  // }
-
   addMovie(): void {
     const movieInfo = this.parseUserInput(this.movieInput);
     this.movieInput = '';
-    this.store.dispatch(addMovie({ movie: movieInfo }));
-    // this.movieFacade.addMovie(movieInfo);
+    this.movieFacade.addMovie(movieInfo);
   }
 
   parseUserInput(movieInput: string): Movie {
