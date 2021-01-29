@@ -5,5 +5,5 @@ export interface AppState {
   movie: MovieState;
 }
 export const reducers = {
-  movies: movieReducer,
+  movie: movieReducer,
 };

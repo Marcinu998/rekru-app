@@ -5,13 +5,11 @@ import { addMovie } from './movies.actions';
 
 const reducer = createReducer(
   moviesInitialState,
-  on(addMovie, (state: MovieState, payload: { movie: Movie }) => {
-    console.log(payload);
-    return ({
-      ...state,
-      movies: [...state.movies, payload.movie],
-    });
-  }),
+  on(addMovie, (state: MovieState, payload: { movie: Movie }) => ({
+    ...state,
+    movies: [...state.movies, payload.movie],
+  })
+  ),
 );
 export function movieReducer(state: MovieState = moviesInitialState, action: Action): MovieState {
   return reducer(state, action);
