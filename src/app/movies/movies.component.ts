@@ -1,10 +1,10 @@
+import { addMovie } from './../state/movies/movies.actions';
 import { MovieFacade } from './../state/movies/movies.facade';
 import { Component } from '@angular/core';
 import { Movie } from '../interfaces';
 import { getVideoId } from '../shared/recognize-video-type-id';
 import { Store } from '@ngrx/store';
 import { AppState } from '../state/index';
-import { addMovie } from '../state/movies/movies.actions';
 
 @Component({
   selector: 'app-movies',
@@ -22,14 +22,15 @@ export class MoviesComponent {
   ) { }
 
   // tslint:disable-next-line: use-lifecycle-interface
-  public ngOnInit(movie: Movie): void {
-    this.movieFacade.getMovieFacade(movie);
-  }
+  // public ngOnInit(movie: Movie): void {
+  //   this.movieFacade.getFacade(movie);
+  // }
 
   addMovie(): void {
     const movieInfo = this.parseUserInput(this.movieInput);
     this.movieInput = '';
     this.store.dispatch(addMovie({ movie: movieInfo }));
+    // this.movieFacade.addMovie(movieInfo);
   }
 
   parseUserInput(movieInput: string): Movie {

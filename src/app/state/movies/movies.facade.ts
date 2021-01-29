@@ -12,7 +12,7 @@ export class MovieFacade {
     private store: Store<AppState>,
   ) { }
 
-  public getMovieFacade(movie: Movie): void {
+  public addMovie(movie: Movie): void {
     this.store.dispatch(fromMovie.addMovie({ movie }));
   }
 }
