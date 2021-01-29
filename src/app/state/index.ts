@@ -7,6 +7,6 @@ export interface AppState {
 export const reducers = {
   movie: movieReducer,
 };
-export const facades = {
+export const facades = [
   MovieFacade
-};
+];
