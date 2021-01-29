@@ -3,4 +3,3 @@ export interface Movie {
   id: string;
   link: string;
 }
-

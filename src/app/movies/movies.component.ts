@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Movie } from '../interfaces';
 import { getVideoId } from '../shared/recognize-video-type-id';
+import { Store } from '@ngrx/store';
+import { AppState } from '../state/index';
+import { addMovie } from '../state/movies/movies.actions';
+
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -11,11 +15,12 @@ export class MoviesComponent {
   movies: Movie[] = [];
   movieInput = '';
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   addMovie(): void {
     const movieInfo = this.parseUserInput(this.movieInput);
     this.movieInput = '';
+    this.store.dispatch(addMovie({ movie: movieInfo }));
   }
 
   parseUserInput(movieInput: string): Movie {
