@@ -1,9 +1,8 @@
+import { MovieFacade } from './../state/movies/movies.facade';
 import { Component } from '@angular/core';
 import { Movie } from '../interfaces';
 import { getVideoId } from '../shared/recognize-video-type-id';
-import { Store } from '@ngrx/store';
-import { AppState } from '../state/index';
-import { addMovie } from '../state/movies/movies.actions';
+
 
 @Component({
   selector: 'app-movies',
@@ -15,12 +14,14 @@ export class MoviesComponent {
   movies: Movie[] = [];
   movieInput = '';
 
-  constructor(private store: Store<AppState>) { }
+  constructor(
+    private movieFacade: MovieFacade,
+  ) { }
 
   addMovie(): void {
     const movieInfo = this.parseUserInput(this.movieInput);
     this.movieInput = '';
-    this.store.dispatch(addMovie({ movie: movieInfo }));
+    this.movieFacade.addMovie(movieInfo);
   }
 
   parseUserInput(movieInput: string): Movie {

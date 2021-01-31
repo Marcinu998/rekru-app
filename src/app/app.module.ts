@@ -1,4 +1,4 @@
-import { reducers } from './state/index';
+import { reducers, facades } from './state/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +28,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatIconModule, MatFormFieldModule, MatPaginatorModule, FormsModule, HttpClientModule,
     StoreModule.forRoot(reducers), StoreDevtoolsModule.instrument(),
   ],
-  providers: [],
+  providers: [...facades],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
