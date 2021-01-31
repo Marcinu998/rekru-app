@@ -2,8 +2,7 @@ import { MovieFacade } from './../state/movies/movies.facade';
 import { Component } from '@angular/core';
 import { Movie } from '../interfaces';
 import { getVideoId } from '../shared/recognize-video-type-id';
-import { Store } from '@ngrx/store';
-import { AppState } from '../state/index';
+
 
 @Component({
   selector: 'app-movies',
@@ -16,7 +15,6 @@ export class MoviesComponent {
   movieInput = '';
 
   constructor(
-    private store: Store<AppState>,
     private movieFacade: MovieFacade,
   ) { }
 
