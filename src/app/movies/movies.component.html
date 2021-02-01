@@ -14,8 +14,6 @@
     </mat-menu>
   </div>
 </div>
-<!-- <div class="movie" *ngFor="let movie of movies">{{movie}}
-   -->
 <div class="movie" *ngFor="let movie of (movies$ | async)">
   {{movie.type}} - {{movie.id}}
   <button mat-raised-button>Obejrzyj</button>

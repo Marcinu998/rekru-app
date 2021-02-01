@@ -7,7 +7,6 @@ import * as moviesSelectors from './movies.selectors';
 
 @Injectable()
 export class MovieFacade {
-  // public movies$ = this.store;
   public movies$ = this.store.select(moviesSelectors.selectMovie);
 
   constructor(
