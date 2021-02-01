@@ -13,6 +13,7 @@ import { getVideoId } from '../shared/recognize-video-type-id';
 export class MoviesComponent {
   movies: Movie[] = [];
   movieInput = '';
+  public movies$ = this.movieFacade.movies$;
 
   constructor(
     private movieFacade: MovieFacade,
