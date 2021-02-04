@@ -1,4 +1,4 @@
-import { reducers, facades } from './state/index';
+import { reducers, facades, effects } from './state/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,8 @@ import { MoviesComponent } from './movies/movies.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppRoutingModule,
     BrowserAnimationsModule, MatMenuModule, MatButtonModule, MatMenuModule, MatInputModule,
     MatIconModule, MatFormFieldModule, MatPaginatorModule, FormsModule, HttpClientModule,
-    StoreModule.forRoot(reducers), StoreDevtoolsModule.instrument(),
+    StoreModule.forRoot(reducers), StoreDevtoolsModule.instrument(), EffectsModule.forRoot(effects)
   ],
   providers: [...facades],
   bootstrap: [AppComponent]

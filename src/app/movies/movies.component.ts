@@ -31,6 +31,7 @@ export class MoviesComponent {
       type: videoMetadata.service,
       link: movieInput,
       id: videoMetadata.id,
+      loading: true,
     };
   }
 }

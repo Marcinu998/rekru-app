@@ -15,7 +15,7 @@
   </div>
 </div>
 <div class="movie" *ngFor="let movie of (movies$ | async)">
-  {{movie.type}} - {{movie.id}}
+  {{movie.type}} {{movie.id}} {{movie.loading}}
   <button mat-raised-button>Obejrzyj</button>
   <button mat-raised-button>Usuń</button>
   <button mat-raised-button>Dodaj do ulubionych</button>
