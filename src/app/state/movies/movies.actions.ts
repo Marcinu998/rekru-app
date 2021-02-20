@@ -7,4 +7,4 @@ export const addMovie = createAction(
 );
 export const addMovieSuccess = createAction(
   '[addMovie] Add Movie Success',
-  props<{ movie: Movie[] }>());
+  props<{ movie: Movie }>());

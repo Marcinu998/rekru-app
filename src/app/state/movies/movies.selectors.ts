@@ -7,8 +7,3 @@ export const selectMovie = createSelector(
   selectMovieState,
   state => state.movies,
 );
-
-export const selectLoading = createSelector(
-  selectMovieState,
-  state => state.loading,
-);

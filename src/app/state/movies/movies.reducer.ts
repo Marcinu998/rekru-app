@@ -5,16 +5,31 @@ import * as fromMovie from './movies.actions';
 
 const reducer = createReducer(
   moviesInitialState,
-  on(fromMovie.addMovie, (state: MovieState, payload: { movie: Movie }) => ({
-    ...state,
-    movies: [...state.movies, payload.movie],
-    loading: true,
-  })),
-  on(fromMovie.addMovieSuccess, (state: MovieState, { movie }) => ({
-    ...state,
-    movie,
-    loading: false,
-  })),
+  on(fromMovie.addMovie, (state: MovieState, payload: { movie: Movie }) => {
+    const flagged = { ...payload.movie, loading: true };
+    return {
+      ...state,
+      movies: [...state.movies, flagged]
+    };
+  }
+  ),
+  on(fromMovie.addMovieSuccess, (state: MovieState, payload: { movie: Movie }) => {
+    const newMovies = state.movies.map(movieFromState => {
+      if (
+        movieFromState.id !== payload.movie.id) {
+        return movieFromState;
+      }
+      return {
+        ...movieFromState,
+        loading: false
+      };
+    });
+    return {
+      ...state,
+      movies: newMovies,
+    };
+  }
+  )
 );
 export function movieReducer(state: MovieState = moviesInitialState, action: Action): MovieState {
   return reducer(state, action);

@@ -8,7 +8,6 @@ import * as moviesSelectors from './movies.selectors';
 @Injectable()
 export class MovieFacade {
   public movies$ = this.store.select(moviesSelectors.selectMovie);
-  public loading$ = this.store.select(moviesSelectors.selectLoading);
 
   constructor(
     private store: Store<AppState>,
