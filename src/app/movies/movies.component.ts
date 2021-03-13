@@ -1,7 +1,11 @@
+import { Statistics } from './../YoutubeResponseInterface';
+import { addMovie } from './../state/movies/movies.actions';
+import { HttpService } from './../http/http.service';
 import { MovieFacade } from './../state/movies/movies.facade';
 import { Component } from '@angular/core';
 import { Movie } from '../interfaces';
 import { getVideoId } from '../shared/recognize-video-type-id';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -13,7 +17,7 @@ import { getVideoId } from '../shared/recognize-video-type-id';
 export class MoviesComponent {
   movies: Movie[] = [];
   movieInput = '';
-  public movies$ = this.movieFacade.movies$;
+  movies$: Observable<Movie[]> = this.movieFacade.movies$;
 
   constructor(
     private movieFacade: MovieFacade,
@@ -31,6 +35,8 @@ export class MoviesComponent {
       type: videoMetadata.service,
       link: movieInput,
       id: videoMetadata.id,
+      statistics: '',
+      createdAt: '',
     };
   }
 }

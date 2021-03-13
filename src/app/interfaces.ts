@@ -3,4 +3,6 @@ export interface Movie {
   id: string;
   link: string;
   loading?: boolean;
+  statistics: string;
+  createdAt: string;
 }

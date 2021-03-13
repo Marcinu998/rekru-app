@@ -1,3 +1,4 @@
+import { HttpService } from './../../http/http.service';
 import { Movie } from 'src/app/interfaces';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -11,6 +12,7 @@ export class MovieFacade {
 
   constructor(
     private store: Store<AppState>,
+    private httpService: HttpService,
   ) { }
 
   public addMovie(movie: Movie): void {
