@@ -1,6 +1,3 @@
-import { Statistics } from './../YoutubeResponseInterface';
-import { addMovie } from './../state/movies/movies.actions';
-import { HttpService } from './../http/http.service';
 import { MovieFacade } from './../state/movies/movies.facade';
 import { Component } from '@angular/core';
 import { Movie } from '../interfaces';

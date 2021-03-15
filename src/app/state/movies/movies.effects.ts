@@ -22,6 +22,7 @@ export class MovieEffects {
   addMovie$ = createEffect(() => this.actions$.pipe(
     ofType(fromMovie.addMovie),
     switchMap(({ movie }) => {
+      console.log('cośtam');
       return this.http.getMovieYoutube(movie).pipe(
         map((movie) => fromMovie.addMovieSuccess({ movie })),
       );
