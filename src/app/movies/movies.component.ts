@@ -4,7 +4,6 @@ import { Movie } from '../interfaces';
 import { getVideoId } from '../shared/recognize-video-type-id';
 import { Observable } from 'rxjs';
 
-
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -32,8 +31,11 @@ export class MoviesComponent {
       type: videoMetadata.service,
       link: movieInput,
       id: videoMetadata.id,
-      statistics: '',
-      createdAt: '',
+      title: videoMetadata.title,
+      publishedAt: Date.now(),
+      likeCount: videoMetadata.likeCount,
+      viewCount: videoMetadata.vievCount,
+      src: videoMetadata.src,
     };
   }
 }

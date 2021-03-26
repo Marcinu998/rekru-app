@@ -1,4 +1,4 @@
-export interface Welcome {
+export interface YtResponse {
   kind: string;
   etag: string;
   items: Item[];
@@ -10,23 +10,8 @@ export interface Item {
   etag: string;
   id: string;
   snippet: Snippet;
-  contentDetails: ContentDetails;
   statistics: Statistics;
 }
-
-export interface ContentDetails {
-  duration: string;
-  dimension: string;
-  definition: string;
-  caption: string;
-  licensedContent: boolean;
-  contentRating: ContentRating;
-  projection: string;
-}
-
-
-// tslint:disable-next-line: no-empty-interface
-export interface ContentRating { }
 
 export interface Snippet {
   publishedAt: Date;
