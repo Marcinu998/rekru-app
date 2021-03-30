@@ -1,4 +1,4 @@
-import { Movie } from 'src/app/interfaces/movie';
+import { Movie } from 'src/app/interfaces';
 import { createAction, props } from '@ngrx/store';
 
 export const addMovie = createAction(

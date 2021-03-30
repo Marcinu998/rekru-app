@@ -1,5 +1,5 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { Movie } from 'src/app/interfaces/movie';
+import { Movie } from 'src/app/interfaces';
 import { moviesInitialState, MovieState } from './movies-state';
 import * as fromMovie from './movies.actions';
 

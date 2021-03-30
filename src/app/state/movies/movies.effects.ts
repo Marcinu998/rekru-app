@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
 import * as fromMovie from './movies.actions';
-import { YtResponse } from '../../interfaces/youtubeResponse';
+import { YtResponse } from '../../interfaces';
 
 @Injectable()
 export class MovieEffects {
