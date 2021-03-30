@@ -10,7 +10,7 @@ export class MovieFacade {
   public movies$ = this.store.select(moviesSelectors.selectMovie);
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<AppState>
   ) { }
 
   public addMovie(movie: Movie): void {

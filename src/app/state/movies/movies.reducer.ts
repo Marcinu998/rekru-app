@@ -20,7 +20,7 @@ const reducer = createReducer(
         return movieFromState;
       }
       return {
-        ...movieFromState,
+        ...payload.movie,
         loading: false
       };
     });

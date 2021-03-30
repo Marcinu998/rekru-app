@@ -22,7 +22,21 @@
   padding: 5px;
   margin: 40px;
   border: 1px solid black;
-  height: 15vh;
+  height: 25vh;
   overflow: hidden;
-  text-align: right;
+  display: flex;
+}
+
+.video {
+  position: relative;
+  margin: 0;
+  padding: 5%;
+}
+
+.movie-button {
+  margin: 5px;
+}
+
+p {
+  color: white;
 }
