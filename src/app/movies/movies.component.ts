@@ -1,6 +1,6 @@
 import { MovieFacade } from './../state/movies/movies.facade';
 import { Component } from '@angular/core';
-import { Movie } from '../interfaces';
+import { Movie } from '../interfaces/movie';
 import { getVideoId } from '../shared/recognize-video-type-id';
 import { Observable } from 'rxjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -36,11 +36,6 @@ export class MoviesComponent {
     return {
       type: videoMetadata.service,
       id: videoMetadata.id,
-      title: '',
-      publishedAt: Date.now(),
-      likeCount: '',
-      viewCount: '',
-      src: '',
     };
   }
 }

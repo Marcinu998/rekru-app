@@ -34,7 +34,7 @@ export interface Localized {
 }
 
 export interface Thumbnails {
-  default: Default;
+  thumbnails: Default;
   medium: Default;
   high: Default;
   standard: Default;

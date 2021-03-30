@@ -3,7 +3,7 @@ export interface Movie {
   id: string;
   loading?: boolean;
   title?: string;
-  publishedAt?: any;
+  publishedAt?: Date;
   likeCount?: string;
   viewCount?: string;
   src?: string;

@@ -1,4 +1,4 @@
-import { Movie } from './../../interfaces';
+import { Movie } from '../../interfaces/movie';
 
 export interface MovieState {
   movies: Movie[];
