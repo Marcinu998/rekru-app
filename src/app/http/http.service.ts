@@ -17,11 +17,9 @@ export class HttpService {
     const key = 'AIzaSyCdgrAbszG28hJJw_zInz-xm4PqY6aa3tw';
     const url = `https://www.googleapis.com/youtube/v3/videos?id=${movie.id}&key=${key}&part=snippet,statistics`;
     const request = this.http.get<YtResponse>(url);
-    // console.log(url);
     return this.handleRequest<YtResponse>(request);
   }
   public handleRequest<T = any>(requestObservable: Observable<T>): Observable<T> {
     return requestObservable;
   }
 }
-

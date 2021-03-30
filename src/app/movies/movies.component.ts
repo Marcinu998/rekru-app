@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Movie } from '../interfaces';
 import { getVideoId } from '../shared/recognize-video-type-id';
 import { Observable } from 'rxjs';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-movies',
@@ -17,6 +18,7 @@ export class MoviesComponent {
 
   constructor(
     private movieFacade: MovieFacade,
+    private sanitizer: DomSanitizer,
   ) { }
 
   addMovie(): void {
@@ -25,17 +27,20 @@ export class MoviesComponent {
     this.movieFacade.addMovie(movieInfo);
   }
 
+  sanitizeSrc(movie: Movie): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(movie.src as string);
+  }
+
   parseUserInput(movieInput: string): Movie {
     const videoMetadata = getVideoId(movieInput);
     return {
       type: videoMetadata.service,
-      link: movieInput,
       id: videoMetadata.id,
-      title: videoMetadata.title,
+      title: '',
       publishedAt: Date.now(),
-      likeCount: videoMetadata.likeCount,
-      viewCount: videoMetadata.vievCount,
-      src: videoMetadata.src,
+      likeCount: '',
+      viewCount: '',
+      src: '',
     };
   }
 }

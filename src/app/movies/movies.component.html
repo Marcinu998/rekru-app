@@ -16,17 +16,19 @@
 </div>
 <div class="movie" *ngFor="let movie of (movies$ | async)">
   <p *ngIf="movie.loading; else movieView">loading...{{movie.loading}}</p>
-  <iframe class="video" width="200" height="150" [src]="movie.src" frameborder="0" allowfullscreen></iframe>
+  <iframe class="video" width="200" height="150" [src]="sanitizeSrc(movie)" frameborder="0" allowfullscreen></iframe>
   <div class="movie-button">
     <button mat-raised-button>Obejrzyj</button>
     <button mat-raised-button>Usuń</button>
     <button mat-raised-button>Dodaj do ulubionych</button>
   </div>
   <ng-template #movieView>
-    <p>Tytuł: {{movie.title}}, <br>
+    <p>
+      Tytuł: {{movie.title}}, <br>
       Liczba wyświetleń: {{movie.viewCount}}, <br>
       Liczba polubień: {{movie.likeCount}}, <br>
-      Data dodania do biblioteki: {{movie.publishedAt}} </p>
+      Data dodania do biblioteki: {{movie.publishedAt}}
+    </p>
   </ng-template>
 </div>
 <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
